@@ -40,9 +40,7 @@ def predict_1_1(data: dict):
     #     json.dump(data, f, indent=4)
     model = model_infor["phase-1"]["prob-1"]["model"]
     feature_names = data["columns"]
-    print(feature_names)
     feature_values = data["rows"]
-    print(np.array(feature_values).shape)
     data_df = pd.DataFrame(feature_values, columns=feature_names).drop(columns=['is_drift', 'batch_id'])
     y_pred = model.predict(data_df)
     output = {}
