@@ -43,7 +43,7 @@ def predict_1_1(data: dict):
     print(feature_names)
     feature_values = data["rows"]
     print(np.array(feature_values).shape)
-    data_df = pd.DataFrame(feature_values, columns=feature_names)
+    data_df = pd.DataFrame(feature_values, columns=feature_names).drop(columns=['is_drift', 'batch_id'])
     y_pred = model.predict(data_df)
     output = {}
     output["id"] = request_id
@@ -70,7 +70,7 @@ def predict_1_1(data: dict):
     feature_names = data["columns"]
     feature_values = data["rows"]
 
-    data_df = pd.DataFrame(feature_values, columns=feature_names)
+    data_df = pd.DataFrame(feature_values, columns=feature_names).drop(columns=['is_drift', 'batch_id'])
     y_pred = model.predict(data_df)
     output = {}
     output["id"] = request_id
